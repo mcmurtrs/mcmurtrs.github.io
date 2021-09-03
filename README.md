@@ -5,6 +5,8 @@ Link to public website:
 https://mcmurtrs.github.io/
 
 
+# Info on Root Diseases from USFS
+
 "Figure 263. Figure 263. Fruiting bodies of root disease fungi are located at the base or roots of infected trees.
 Root disease fungi affect all tree species in the Southwestern Region, with Douglas-fir, true firs, spruce, and aspen being the most susceptible to damage. Susceptibility also varies by tree age, genetics, type of root disease pathogen present and site history.
 
