@@ -35,13 +35,6 @@
   });
 	  
 
-  var popup = L.popup({
-	  maxWidth : 300
-  })
-	  
-  	.setLatLng( [44.50, -123.45])
-  	.setContent('Hi!<img src="images/TMT2_BLK1.PNG" />')
-  	.openOn(map)
  
   
   
@@ -56,7 +49,7 @@
     
     /* Display a point marker with pop-up text. TMT3_BLK4 */
   L.marker([44.5240086, -123.5404820]).addTo(map) // EDIT marker coordinates
-  .bindPopup(popup); // EDIT pop-up text message
+  .bindPopup('Hi!<img src="images/TMT2_BLK1.PNG" />'); // EDIT pop-up text message
   
 	  
 	  
