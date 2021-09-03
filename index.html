@@ -8,7 +8,8 @@
   <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
+  <script src="js/catiline.js"></script>
+  <script src="js/leaflet.shpfile.js"></script>
   <!-- Position the map and title with Cascading Style Sheet (CSS) -->
   <style>
   body { margin:0; padding:0; }
@@ -44,7 +45,24 @@
     /* Display a point marker with pop-up text */
   L.marker([44.50, -123.46]).addTo(map) // EDIT marker coordinates
   .bindPopup("Insert pop-up text here"); // EDIT pop-up text message
-
+  
+    
+  /* Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
 
 
   </script>
