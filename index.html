@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
 
+googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+	
+	
+	
   <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -28,17 +35,11 @@
 
   /* Set up the initial map center and zoom level */
   var map = L.map('map', {
-    center: [44.5291252, -123.5339305], // EDIT coordinates to re-center map
-    zoom: 14,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
+    center: [44.50, -123.45], // EDIT coordinates to re-center map
+    zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false
   });
-	  
-	  
-
- 
-  
-  
 
   /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
   L.tileLayer(
@@ -50,17 +51,8 @@
     
     /* Display a point marker with pop-up text. TMT3_BLK4 */
   L.marker([44.5240086, -123.5404820]).addTo(map) // EDIT marker coordinates
-  .bindPopup('Hi!<img src="images/TMT2_BLK1.PNG" />'); // EDIT pop-up text message
+  .bindPopup("Insert pop-up text here").openPopup; // EDIT pop-up text message
   
-	  
-	  
-	  
-	  
-	  
-	  
- /* -----------------------------------------SHAPE FILES---------------------------------------------*/	  
-	  
-	  
     
   /* Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s */ 
   var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
@@ -79,9 +71,8 @@
 			console.log("finished loaded shapefile");
 		});
 	  
-	  
-  /* Code chunk for shape files TMT1_BLK3 */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
+ /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -96,61 +87,6 @@
 		shpfile.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
-
-	  
-  /* Code chunk for shape files TMT1_BLK1 */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
-			console.log("finished loaded shapefile");
-		});
-	  
-	  
-  /* Code chunk for shape files TMT2_BLK1 */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
-			console.log("finished loaded shapefile");
-		});
-	  
-  /* Code chunk for shape files TMT3_BLK1 */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
-			console.log("finished loaded shapefile");
-		});
-
-
 
 
   </script>
