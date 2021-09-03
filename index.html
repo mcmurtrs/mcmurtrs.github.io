@@ -63,6 +63,24 @@
 		shpfile.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
+	  
+	  
+  /* Code chunk for shape files TMT1_BLK3 */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
 
 
   </script>
