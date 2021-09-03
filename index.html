@@ -33,6 +33,16 @@
     scrollWheelZoom: false,
     tap: false
   });
+	  
+
+  var popup = L.popup({
+	  maxWidth : 300
+  })
+	  
+  
+ 
+  
+  
 
   /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
   L.tileLayer(
@@ -46,6 +56,15 @@
   L.marker([44.5240086, -123.5404820]).addTo(map) // EDIT marker coordinates
   .bindPopup('Hi!<img src="images/TMT2_BLK1.PNG" />'); // EDIT pop-up text message
   
+	  
+	  
+	  
+	  
+	  
+	  
+ /* -----------------------------------------SHAPE FILES---------------------------------------------*/	  
+	  
+	  
     
   /* Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s */ 
   var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
