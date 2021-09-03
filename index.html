@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
 
-googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-});
-	
 	
 	
   <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
@@ -43,12 +38,16 @@ googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}'
 
   /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
   L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
       attribution: '&copy; <a href="https://osm.org/copyright">\
         OpenStreetMap</a> contributors, &copy;\
         <a href="https://carto.com/attribution">CARTO</a>'
   }).addTo(map);
     
+	  '
+	 /*  https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png */
+	  
+	  
     /* Display a point marker with pop-up text. TMT3_BLK4 */
   L.marker([44.5240086, -123.5404820]).addTo(map) // EDIT marker coordinates
   .bindPopup("Insert pop-up text here").openPopup; // EDIT pop-up text message
