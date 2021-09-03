@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>leaflet-map-simple</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="js/catiline.js"></script>
+  <script src="js/leaflet.shpfile.js"></script>
+  <!-- Position the map and title with Cascading Style Sheet (CSS) -->
+  <style>
+  body { margin:0; padding:0; }
+  #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  #map-title { position: relative; margin-top: 10px; margin-left: 50px; float: left; background: white; border: 2px solid rgba(0,0,0,0.2); padding: 6px 8px; font-family: Helvetica; font-weight: bold; font-size: 24px; z-index: 800; }
+  </style>
+</head>
+<body>
+
+  <!-- Display the map and title with HTML division tags  -->
+  <div id="map-title">EDIT map title</div>
+  <div id="map"></div>
+
+  <!-- Create the interactive map content with JavaScript (.js) -->
+  <script>
+
+  /* Set up the initial map center and zoom level */
+  var map = L.map('map', {
+    center: [44.50, -123.45], // EDIT coordinates to re-center map
+    zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
+    scrollWheelZoom: false,
+    tap: false
+  });
+	  
+
+  var popup = L.popup({
+	  maxWidth : 300
+  })
+	  
+  
+ 
+  
+  
+
+  /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://osm.org/copyright">\
+        OpenStreetMap</a> contributors, &copy;\
+        <a href="https://carto.com/attribution">CARTO</a>'
+  }).addTo(map);
+    
+    /* Display a point marker with pop-up text. TMT3_BLK4 */
+  L.marker([44.5240086, -123.5404820]).addTo(map) // EDIT marker coordinates
+  .bindPopup('Hi!<img src="images/TMT2_BLK1.PNG" />'); // EDIT pop-up text message
+  
+	  
+	  
+	  
+	  
+	  
+	  
+ /* -----------------------------------------SHAPE FILES---------------------------------------------*/	  
+	  
+	  
+    
+  /* Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+  /* Code chunk for shape files TMT1_BLK3 */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+
+	  
+  /* Code chunk for shape files TMT1_BLK1 */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+  /* Code chunk for shape files TMT2_BLK1 */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+  /* Code chunk for shape files TMT3_BLK1 */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+
+
+
+
+  </script>
+</body>
+</html>
