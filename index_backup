@@ -46,7 +46,7 @@
   .bindPopup("Insert pop-up text here"); // EDIT pop-up text message
 
 
-
+ /*https://github.com/HandsOnDataViz/leaflet-map-simple/blob/main/index.html*/
   </script>
 </body>
 </html>
