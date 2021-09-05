@@ -51,8 +51,8 @@
   .bindPopup("Insert pop-up text here").openPopup; // EDIT pop-up text message
   
     
-  /* Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
+  /* ----------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
+  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -69,6 +69,24 @@
 		});
 	  
  /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK2.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	   /* Code chunk for shape file */ 
 	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
@@ -84,10 +102,29 @@
 		shpfile.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
+
 	  
 	  
 	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
+	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK4.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+
+
+	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK5.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -105,7 +142,7 @@
 
 	  
 	  
-	   /* Code chunk for shape file */ 
+	  	   /* Code chunk for shape file */ 
 	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
@@ -121,9 +158,66 @@
 		shpfile.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
-
-
-	   /* Code chunk for shape file */ 
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK2.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK3.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK4.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
 	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
@@ -139,7 +233,84 @@
 		shpfile.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
-
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK2.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK3.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK4.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK5.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfile.addTo(map);
+		shpfile.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	 
+	  
 	  
 
   </script>
