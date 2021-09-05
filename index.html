@@ -51,7 +51,11 @@
   .bindPopup("Insert pop-up text here").openPopup; // EDIT pop-up text message
   
     
-  /* ----------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
+	  
+	  
+	  
+  /* -------------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
   var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
@@ -309,7 +313,14 @@
 		});
 	  
 	  
+	  
+	  
+	  
 	 
+	  
+/* -------------------------Code chunk for popups. Helpful tutorial: https://www.youtube.com/watch?v=OYjFR_CGV8o----------------------- */ 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
+	 shpfileTMT1_BLK1.bindPopup("This is text").openPopup();
 	  
 	  
 
