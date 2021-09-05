@@ -52,7 +52,7 @@
   
     
   /* ----------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
-  var shpfile = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
+  var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -63,8 +63,8 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT1_BLK1.addTo(map);
+		shpfileTMT1_BLK1.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
