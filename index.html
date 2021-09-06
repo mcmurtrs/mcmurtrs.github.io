@@ -73,7 +73,7 @@
 		});
 	  
  /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK2.zip', {
+	var shpfileTMT1_BLK2 = new L.Shapefile('shapefiles/TMT1_BLK2.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -84,8 +84,8 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT1_BLK2.addTo(map);
+		shpfileTMT1_BLK2.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
