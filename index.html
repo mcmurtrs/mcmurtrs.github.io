@@ -128,7 +128,7 @@
 
 
 	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK5.zip', {
+	var shpfileTMT1_BLK5 = new L.Shapefile('shapefiles/TMT1_BLK5.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -139,8 +139,8 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT1_BLK5.addTo(map);
+		shpfileTMT1_BLK5.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 
@@ -322,6 +322,9 @@
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
 	 shpfileTMT1_BLK1.bindPopup('<img src="images/TMT1_BLK1.png" />');
 	 shpfileTMT1_BLK2.bindPopup('<img src="images/TMT1_BLK2.png" />');
+	  shpfileTMT1_BLK3.bindPopup('<img src="images/TMT1_BLK3.png" />');
+	  shpfileTMT1_BLK4.bindPopup('<img src="images/TMT1_BLK4.png" />');
+	  shpfileTMT1_BLK5.bindPopup('<img src="images/TMT1_BLK5.png" />');
 	 
 	 
 	  
