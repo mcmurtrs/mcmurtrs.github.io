@@ -91,7 +91,7 @@
 	  
 	  
 	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
+	var shpfileTMT1_BLK3 = new L.Shapefile('shapefiles/TMT1_BLK3.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -102,15 +102,15 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT1_BLK3.addTo(map);
+		shpfileTMT1_BLK3.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 
 	  
 	  
 	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT1_BLK4.zip', {
+	var shpfileTMT1_BLK4 = new L.Shapefile('shapefiles/TMT1_BLK4.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -121,8 +121,8 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT1_BLK4.addTo(map);
+		shpfileTMT1_BLK4.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 
