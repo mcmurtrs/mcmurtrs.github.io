@@ -147,7 +147,7 @@
 	  
 	  
 	  	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
+	var shpfileTMT2_BLK1 = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -158,14 +158,14 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT2_BLK1.addTo(map);
+		shpfileTMT2_BLK1.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
 	  
 	  	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK2.zip', {
+	var shpfileTMT2_BLK2 = new L.Shapefile('shapefiles/TMT2_BLK2.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -176,34 +176,15 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
-			console.log("finished loaded shapefile");
-		});
-	  
-	  
-	  
-	  	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK3.zip', {
-			onEachFeature: function(feature, layer) {
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-						maxHeight: 200
-					});
-				}
-			}
-		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT2_BLK2.addTo(map);
+		shpfileTMT2_BLK2.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
 	  
 	  
 	  	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT2_BLK4.zip', {
+	var shpfileTMT2_BLK3 = new L.Shapefile('shapefiles/TMT2_BLK3.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -214,15 +195,15 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT2_BLK3.addTo(map);
+		shpfileTMT2_BLK3.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
 	  
 	  
 	  	   /* Code chunk for shape file */ 
-	var shpfile = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
+	var shpfileTMT2_BLK4 = new L.Shapefile('shapefiles/TMT2_BLK4.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -233,8 +214,27 @@
 				}
 			}
 		});
-		shpfile.addTo(map);
-		shpfile.once("data:loaded", function() {
+		shpfileTMT2_BLK4.addTo(map);
+		shpfileTMT2_BLK4.once("data:loaded", function() {
+			console.log("finished loaded shapefile");
+		});
+	  
+	  
+	  
+	  	   /* Code chunk for shape file */ 
+	var shpfileTMT2_BLK5 = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
+			onEachFeature: function(feature, layer) {
+				if (feature.properties) {
+					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+						return k + ": " + feature.properties[k];
+					}).join("<br />"), {
+						maxHeight: 200
+					});
+				}
+			}
+		});
+		shpfileTMT2_BLK5.addTo(map);
+		shpfileTMT2_BLK5.once("data:loaded", function() {
 			console.log("finished loaded shapefile");
 		});
 	  
