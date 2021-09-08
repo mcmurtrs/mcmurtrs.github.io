@@ -51,7 +51,7 @@
 	
 	
  /* ------------------------------------------------------------------------------------------------------------------ */ 	  	  
-  /* -------------------------Create the interactive map content with JavaScript (.js)----------------------- */ 
+  /* ----------Create the interactive map content with JavaScript (.js). Adjust coordinates and zoom levels here.---------------- */ 
 /* --------------------------------------------------------------------------------------------------------------------- */ 
   <script>
 
@@ -108,7 +108,7 @@ legend.onAdd = function (map) {
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-           grades[i] + (" <img src="+ labels[i] +" height='200' width='200'>") +'<br>';
+           grades[i] + (" <img src="+ labels[i] +" height='150' width='150'>") +'<br>';
     }
 
     return div;
