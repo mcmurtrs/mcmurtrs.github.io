@@ -76,13 +76,13 @@
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = ["Car", "ball"],
-        labels = ["images/legend.PNG","http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png"];
+        grades = ["", ""],
+        labels = ["images/legend.PNG"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-           grades[i] + (" <img src="+ labels[i] +" height='50' width='50'>") +'<br>';
+           grades[i] + (" <img src="+ labels[i] +" height='400' width='400'>") +'<br>';
     }
 
     return div;
