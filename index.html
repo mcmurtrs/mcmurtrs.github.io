@@ -15,20 +15,7 @@
   <!-- Position the map and title with Cascading Style Sheet (CSS) -->
   <style>
   
- L.Control.textbox = L.Control.extend({
-		onAdd: function(map) {
-			
-		var text = L.DomUtil.create('div');
-		text.id = "info_text";
-		text.innerHTML = "<strong>text here</strong>"
-		return text;
-		},
 
-		onRemove: function(map) {
-			// Nothing to do here
-		}
-	})
-	  
   body { margin:0; padding:0; }
   #map { position: absolute; top:0; bottom:0; right:0; left:0; }
   #map-title { position: relative; margin-top: 10px; margin-left: 50px; float: left; background: white; border: 2px solid rgba(0,0,0,0.2); padding: 6px 8px; font-family: Helvetica; font-weight: bold; font-size: 24px; z-index: 800; }
@@ -53,9 +40,6 @@
   <!-- Create the interactive map content with JavaScript (.js) -->
   <script>
 
-  L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-  L.control.textbox({ position: 'bottomleft' }).addTo(map);
-	  
 	  
   /* Set up the initial map center and zoom level */
   var map = L.map('map', {
@@ -85,7 +69,27 @@
 	  
   /* -------------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
-  var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
+  
+	  
+	   L.Control.textbox = L.Control.extend({
+		onAdd: function(map) {
+			
+		var text = L.DomUtil.create('div');
+		text.id = "info_text";
+		text.innerHTML = "<strong>text here</strong>"
+		return text;
+		},
+
+		onRemove: function(map) {
+			// Nothing to do here
+		}
+	});
+	  
+	  
+	  
+	  
+	  
+	  var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -388,6 +392,9 @@
 	 
 	 
 	 
+	  
+  L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+  L.control.textbox({ position: 'bottomleft' }).addTo(map);
 	  
 	  
 	  
