@@ -71,20 +71,22 @@
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
   
 	  
-	   L.Control.textbox = L.Control.extend({
-		onAdd: function(map) {
-			
-		var text = L.DomUtil.create('div');
-		text.id = "info_text";
-		text.innerHTML = "<strong>Text here </strong>"
-		return text;
-		},
+	 var legend = L.control({position: 'bottomright'});
 
-		onRemove: function(map) {
-			// Nothing to do here
-		}
-	});
-	  
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = ["Car", "ball"],
+        labels = ["http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png","http://datentaeter.de/wp-content/uploads/2016/06/flag_de.png"];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            grades[i] + (" <img src="images/legend.PNG" />") +'<br>';
+    }
+
+    return div;
+};
 	  
 	  
 	  
@@ -393,9 +395,7 @@
 	 
 	 
 	  
-  L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-  L.control.textbox({ position: 'bottomleft' }).addTo(map);
-	  
+legend.addTo(map);
 	  
 	  
 	  
