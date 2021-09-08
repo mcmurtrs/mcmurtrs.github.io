@@ -64,19 +64,18 @@
   ("Popup Text!!").addTo(map).openPopup; // EDIT pop-up text message
   
     
-	  
-	  
-	  
-  /* -------------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */ 	  	  
+  /* -------------------------Add image as a legend to the map. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
-  
+ 
 	  
-	 var legend = L.control({position: 'bottomright'});
+	  
+	  	 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = ["", ""],
+        grades = [""],
         labels = ["images/legend.PNG"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -93,6 +92,13 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 	  
 	  
+	  
+	  
+	  
+	  
+  /* -------------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
+ 
 	  
 	  
 	  
