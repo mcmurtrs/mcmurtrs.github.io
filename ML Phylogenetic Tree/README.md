@@ -1,6 +1,6 @@
-# Creating a Maximum Liklikhood Phylogenetic Tree with Randomized Axelerated Maximum Likelihood (MAxML)
+# Creating a Maximum Liklihood Phylogenetic Tree with Randomized Axelerated Maximum Likelihood (MAxML)
 
-#### Authors: Shawn McMurtrey, Carolina Piña Páez, Patrick Bennett, Nick Carleson, Javier Tabima
+#### Authors: Shawn McMurtrey, Carolina Piña Páez, Patrick Bennett, Sarah Hoffman, Nick Carleson, Javier Tabima
 
 ## Step 1:
 - Read VCF file into R with vcfR package:
