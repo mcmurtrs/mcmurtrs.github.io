@@ -75,7 +75,7 @@ myTree <- read.tree("C:/Users/shawn/Desktop/RAxML_bipartitions.tre")
 
 - Notice that this is a new type of file.
 - It is not a data file as we would normally expect to see in R, this is a list.
-- This particular list file contains 5 elements: edge, edge.length, Node, node.label, and tip.label
+- This particular list file contains 5 elements: edge, edge.length, Nnode, node.label, and tip.label
 - For this example, there are 173 edges, 173 edge lengths, 86 nodes, 86 node lables and 88 node tip labels. 
 
 ![image](https://user-images.githubusercontent.com/49656044/144702891-56af2f7d-30b4-4dbe-ab1e-b5da1a2f931d.png)
