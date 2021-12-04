@@ -1,4 +1,4 @@
-# Creating a Maximum Liklihood Phylogenetic Tree with Randomized Axelerated Maximum Likelihood (MAxML)
+# Creating a Maximum likelihood Phylogenetic Tree with Randomized Axelerated Maximum Likelihood (MAxML)
 
 #### Authors: Shawn McMurtrey, Carolina Piña Páez, Patrick Bennett, Sarah Hoffman, Nick Carleson, Javier Tabima
 
