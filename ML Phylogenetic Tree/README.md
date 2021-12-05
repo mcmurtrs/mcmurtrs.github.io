@@ -2,7 +2,7 @@
 
 #### Authors: Shawn McMurtrey, Carolina Piña Páez, Patrick Bennett, Sarah Hoffman, Nick Carleson, Javier Tabima
 
-## Step 1:
+## Step 1: Import filtered VCF file into R
 - Read VCF file into R with vcfR package:
 
 ```{r}
@@ -15,7 +15,7 @@ LRR_VCF
 
 ```
 
-## Step 2: 
+## Step 2: Convert the very large VCF file into a matrix for computational efficeincy 
 - Format missing data and account for mixed phases with pipes into a gt matrix.
 - Print out the number of samples and number of SNPs within your file
 - Open the file in Notepad ++, save those numbers and paste them in the first line of "gt.phy" that you're going to save in the next two step.
@@ -34,7 +34,7 @@ gt[gt == "1|1"] <- 2
 gt[is.na(gt)] <- "?"
 gt <- t(gt)
 dim(gt)
-102 1341746
+#102 1341746
 
 ```
 
@@ -139,6 +139,8 @@ geom_treescale(x=.5,y=-15,width=15,fontsize=3,offset=0.5)
 
 
 Helpful githubs/tutorials:
+https://knausb.github.io/vcfR_documentation/matrices.html
+
 https://github.com/Patrick-Bennett/leptographium_popgen/blob/master/PhylogeneticTree/RAxML_Tree_LWP_LWW_FINAL.Rmd
 
 Helpful videos:
