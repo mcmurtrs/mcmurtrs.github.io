@@ -19,7 +19,7 @@ LRR_VCF
 - Format missing data and account for mixed phases with pipes into a gt matrix.
 - Print out the number of samples and number of SNPs within your file
 - Open the file in Notepad ++, save those numbers and paste them in the first line of "gt.phy" that you're going to save in the next two step.
-- Do a "Find and Replace" to replace all of the " symbols with a blank space (the " symbol throws and error during the next step when you run MAxML on the cluster.
+- Do a "Find and Replace" to replace all of the " symbols with a blank space (the " symbol throws an error during the next step when you run MAxML on the cluster.
 
 ```{r}
 
