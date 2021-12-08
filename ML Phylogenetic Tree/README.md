@@ -131,16 +131,29 @@ RAXtre<-q3
 
 ```{r}
 # The tree
-RAXtre +
+RAXtre + 
 
-# Add ML values > 70  
-geom_nodelab(aes(y=branch, label=label, subset =   !is.na(as.numeric(label)) & as.numeric(label) >70), vjust=-.5, size=2) +
+# Add ML values > 70
+geom_nodelab(aes(y=branch,  label = label, subset =   !is.na(as.numeric(label)) & as.numeric(label) >70), vjust=-.5, size=.1) +
   
 # Tree tip labels
 geom_tiplab(size = 2) +
   
+# Bootstrap values  
+geom_nodepoint(data=d3,size=2,shape=21,aes(fill=cut(as.numeric(bootstrap),c(70,80,90,100),left=T, include.lowest=T))) +
+  
+# Override colors and turn to grey scale 
+scale_fill_manual(name = "Bootstrap support",values = c("white","grey60","black"),labels = c("70-79", "80-89", "90-100"))+
+  
+# Legend 
+guides(colour=guide_legend(override.aes=list(size=10,shape=16,alpha=1))) +
+  
+# Legend position
+theme_tree(legend.position=c(0.6,0.75),legend.text=element_text(size=12),legend.title=element_text(size=12),text=element_text(size=12,face="bold"),legend.margin=margin(t = 0, unit='cm'),legend.box.margin=margin(t = 0, unit='cm'))+ 
+  
 # Tree scale bar
 geom_treescale(x=.5,y=-15,width=15,fontsize=3,offset=0.5)
+
 ```
 
 
