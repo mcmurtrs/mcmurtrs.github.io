@@ -43,7 +43,7 @@ dim(gt)
 ```{r}
 
 gt.pyl <- apply(gt, 1, paste0, collapse="")
-write.table(gt.pyl, sep = "\t", col.names = F, file = "gt8.phy")
+write.table(gt.pyl, sep = "\t", col.names = F, file = "gt.phy")
 
 ```
 
