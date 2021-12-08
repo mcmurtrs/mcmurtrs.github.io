@@ -97,7 +97,7 @@ myTree <- midpoint(myTree)
 
 ```
 
-## Step 10: Add labels with fortify
+## Step 10: Add labels with fortify (not sure how to do this yet...)
 
 ```{r}
 
