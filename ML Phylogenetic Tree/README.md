@@ -47,7 +47,8 @@ write.table(gt.pyl, sep = "\t", col.names = F, file = "gt.phy")
 
 ```
 
-## Step 4: Run RaxML on the cluster
+## Step 4: Run RAxML on the cluster
+- Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 
 ```
 SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m MULTICAT -f a -x 12345 -p 12345' -r snp_tree -P 10
