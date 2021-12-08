@@ -139,12 +139,12 @@ geom_treescale(x=.5,y=-15,width=15,fontsize=3,offset=0.5)
 
 
 
-Helpful githubs/tutorials:
+#### Helpful githubs/tutorials:
 https://knausb.github.io/vcfR_documentation/matrices.html
 
 https://github.com/Patrick-Bennett/leptographium_popgen/blob/master/PhylogeneticTree/RAxML_Tree_LWP_LWW_FINAL.Rmd
 
-Helpful videos:
+#### Helpful videos:
 https://www.youtube.com/watch?v=uAf0DCGynTk&t=323s
 
 
