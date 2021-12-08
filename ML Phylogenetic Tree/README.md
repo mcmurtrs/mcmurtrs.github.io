@@ -149,6 +149,4 @@ https://www.youtube.com/watch?v=uAf0DCGynTk&t=323s
 
 
 
-Copyright © 2021, Shawn B McMurtrey. All rights reserved.
 
-Oregon State University, Botany and Plant Pathology
