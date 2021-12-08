@@ -118,8 +118,16 @@ d3$label <- as.numeric(d3$label)
 d3 <- d3[d3$label > 70,]
 ```
 
+## Step 12: I'm not really sure why we do this step??
 
-## Step 12: Visualize the tree
+
+```{r}
+RAXtre<-q3
+```
+
+
+
+## Step 13: Visualize the tree
 
 ```{r}
 # The tree
