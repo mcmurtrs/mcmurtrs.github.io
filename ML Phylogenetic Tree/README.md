@@ -183,6 +183,9 @@ geom_treescale(x=.5,y=-15,width=15,fontsize=3,offset=0.5)
 
 
 #### Helpful githubs/tutorials:
+
+http://treethinkers.org/tutorials/model-selection/
+
 https://knausb.github.io/vcfR_documentation/matrices.html
 
 http://evomics.org/learning/population-and-speciation-genomics/2020-population-and-speciation-genomics/species-tree-inference/
@@ -190,6 +193,8 @@ http://evomics.org/learning/population-and-speciation-genomics/2020-population-a
 https://github.com/Patrick-Bennett/leptographium_popgen/blob/master/PhylogeneticTree/RAxML_Tree_LWP_LWW_FINAL.Rmd
 
 https://evomics.org/learning/phylogenetics/jmodeltest/
+
+
 
 #### Helpful videos:
 https://www.youtube.com/watch?v=uAf0DCGynTk&t=323s
