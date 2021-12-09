@@ -64,6 +64,7 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
 ## Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:
+- First you need to download and install GUI windows version of PAUP: http://phylosolutions.com/paup-test/
 - Follow the steps from the tutorial found here to identify which evolutionary model to use:
 - https://evomics.org/learning/phylogenetics/jmodeltest/
 
