@@ -64,11 +64,12 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
 ## Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:
-- First you need to download and install GUI windows version of PAUP: http://phylosolutions.com/paup-test/
-- Follow the steps from the tutorial found here to identify which evolutionary model to use:
-- https://evomics.org/learning/phylogenetics/jmodeltest/
+- In order to install the GUI of JMODELTEST you need to first intall Apache Ant and Java JDK 1.6 (or a newer version).
+- This video does an excellent job of showing how to install Apache Ant on Windows 10: https://www.youtube.com/watch?v=7z2yXY57jxY
+- One you have correctly installed Apache Ant, Java JDK 1.6, and JMORDELTEST you can then open the GUI of JMODELTEST with by selecting the .jar file and then follow the tutorial found here for running the JMODELTEST: https://evomics.org/learning/phylogenetics/jmodeltest/
+- Note that this step is computationally heavy and appears to be taking a long time to run.
 
-## Step 5: Run RAxML on the cluster
+## Step 6: Run RAxML on the cluster
 - Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 
 ```
@@ -76,14 +77,14 @@ SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt
 
 ```
 
-## Step 6: Move files from the cluster to your computer and change file extension
+## Step 7: Move files from the cluster to your computer and change file extension
 
 - Move the .bipartitions file to your desktop
 - This file contains the tree and bootstrap values.
 - On your computer, change the extension of the bipartions file to .tre
 
 
-## Step 7: Read the .tre file into R
+## Step 8: Read the .tre file into R
 
 ```{r}
 
@@ -94,7 +95,7 @@ myTree <- read.tree("C:/Users/shawn/Desktop/RAxML_bipartitions.tre")
 
 ```
 
-## Step 8: Open the tree file and inspect the contents
+## Step 9: Open the tree file and inspect the contents
 
 - Notice that this is a new type of file.
 - It is not a data file as we would normally expect to see in R, this is a list.
@@ -104,7 +105,7 @@ myTree <- read.tree("C:/Users/shawn/Desktop/RAxML_bipartitions.tre")
 ![image](https://user-images.githubusercontent.com/49656044/144702891-56af2f7d-30b4-4dbe-ab1e-b5da1a2f931d.png)
 
 
-## Step 9: Reroot the tree
+## Step 10: Reroot the tree
 
 ```{r, message=FALSE}
 library(ape)
@@ -118,7 +119,7 @@ myTree <- midpoint(myTree)
 
 ```
 
-## Step 10: Add labels with fortify (not sure how to do this yet...)
+## Step 11: Add labels with fortify (not sure how to do this yet...)
 
 ```{r}
 
@@ -129,7 +130,7 @@ myTree.fort$bootstrap[!myTree.fort$isTip]<-myTree$node.label
 ```
 
 
-## Step 11: Filter bootstrap labels to remove those less than 70
+## Step 12: Filter bootstrap labels to remove those less than 70
 
 ```{r}
 q3 <- ggtree(myTree.fort)
@@ -139,7 +140,7 @@ d3$label <- as.numeric(d3$label)
 d3 <- d3[d3$label > 70,]
 ```
 
-## Step 12: I'm not really sure why we do this step??
+## Step 13: I'm not really sure why we do this step??
 
 
 ```{r}
@@ -148,7 +149,7 @@ RAXtre<-q3
 
 
 
-## Step 13: Visualize the tree
+## Step 14: Visualize the tree
 
 ```{r}
 # The tree
