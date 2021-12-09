@@ -63,6 +63,10 @@ chmod +x vcf2phylip.py
 python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
+## Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:
+- Follow the steps from the tutorial found here to identify which evolutionary model to use:
+- https://evomics.org/learning/phylogenetics/jmodeltest/
+
 ## Step 5: Run RAxML on the cluster
 - Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 
