@@ -47,7 +47,20 @@ write.table(gt.pyl, sep = "\t", col.names = F, file = "gt.phy")
 
 ```
 
-## Step 4: Run RAxML on the cluster
+## Step 4: Convert VCF file into Nexus format with vcf2phylip python script:
+- Before we can run RAxML we need to know which evolutionary model to use.
+- This can be figured out with JMODELTEST however in order to run JMODELTEST we need a Nexus or fasta file.
+- We only have a vcf file which doesn't contain sequence information. In order to make a P. tree we need sequence information.
+
+```
+#On the command line download the python script by entering the following:
+wget https://raw.githubusercontent.com/edgardomortiz/vcf2phylip/master/vcf2phylip.py
+
+#Change permissions of the python file so that it is executable
+chmod +x vcf2phylip.py
+```
+
+## Step 5: Run RAxML on the cluster
 - Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 
 ```
@@ -162,6 +175,8 @@ geom_treescale(x=.5,y=-15,width=15,fontsize=3,offset=0.5)
 
 #### Helpful githubs/tutorials:
 https://knausb.github.io/vcfR_documentation/matrices.html
+
+http://evomics.org/learning/population-and-speciation-genomics/2020-population-and-speciation-genomics/species-tree-inference/
 
 https://github.com/Patrick-Bennett/leptographium_popgen/blob/master/PhylogeneticTree/RAxML_Tree_LWP_LWW_FINAL.Rmd
 
