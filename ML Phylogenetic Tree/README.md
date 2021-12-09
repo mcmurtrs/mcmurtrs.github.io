@@ -58,6 +58,9 @@ wget https://raw.githubusercontent.com/edgardomortiz/vcf2phylip/master/vcf2phyli
 
 #Change permissions of the python file so that it is executable
 chmod +x vcf2phylip.py
+
+#Run this command in the directory that you have the vcf file and the python file at. -f creates a fasta file. https://github.com/edgardomortiz/vcf2phylip
+python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
 ## Step 5: Run RAxML on the cluster
@@ -179,6 +182,8 @@ https://knausb.github.io/vcfR_documentation/matrices.html
 http://evomics.org/learning/population-and-speciation-genomics/2020-population-and-speciation-genomics/species-tree-inference/
 
 https://github.com/Patrick-Bennett/leptographium_popgen/blob/master/PhylogeneticTree/RAxML_Tree_LWP_LWW_FINAL.Rmd
+
+https://evomics.org/learning/phylogenetics/jmodeltest/
 
 #### Helpful videos:
 https://www.youtube.com/watch?v=uAf0DCGynTk&t=323s
