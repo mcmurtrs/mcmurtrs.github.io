@@ -114,11 +114,11 @@ tuning of the GTR-based likelihood models, re-implementation of the MP (Maximum 
 
 
 ```
-#Example 1, using GTR Model
-SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m GTRCAT -f a -x 12345 -p 12345' -r snp_tree -P 10
+#Example 1, using Jukes Cantor model
+SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s All_over_dec14_21.phy -m MULTICAT --JC69 -f a -x 12345 -p 12345' -r snp_tree -P 10
 
 #Example 2, using MULTICAT Model 
-SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m MULTICAT -f a -x 12345 -p 12345' -r snp_tree -P 10
+SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -m MULTICAT -s All_over_dec14_21.phy -f a -x 12345 -p 12345' -r snp_tree -P 10
 
 ```
 
