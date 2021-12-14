@@ -100,16 +100,15 @@ https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.
 ## Step 6: Run RAxML on the cluster
 - Now that we know which evolutionary model to use, we can change this in the one liner command for RAxML and start builing our tree!
 - Note that the parameters below are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
-- Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contains and try to understand what each parameter means.
+- Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contents and try to understand what each parameter means.
 - 'mpiexec' is a the respective Message Passing Interface (MPI) run-time command, e.g. mpiexec or mpirun depending on your
 local installation (please check with your local computer scientist or someone at the CQLS).
-- 'raxmlHPC-MPI' the version of RAxML being used; RAxML-VI-HPC: Improvement of the OpenMP parallelization, technical
+- 'raxmlHPC-MPI' the version of RAxML being used; From the manual, RAxML-VI-HPC: Improvement of the OpenMP parallelization, technical
 tuning of the GTR-based likelihood models, re-implementation of the MP (Maximum Parsimony) starting tree computations, MPI-based parallel version for multiple bootstrapping.
-- '-N' Specifies the number of alternative runs on distinct starting trees, e.g., if '-N 10'
-is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees 
+- '-N' Specifies the number of alternative runs on distinct starting trees, e.g., if '-N 10' is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees 
 - '-n' specifies the name of the output file
 - '-s' is the input the file 
-- '-m' is the model to use 
+- '-m' is the model to use (Generally, CAT should perform better than GAMMA, particularly with respect to inference times. CAT can typically also produce better scoring trees.)
 - '-x' = rapidBootstrapRandomNumberSeed (whatever that means)
 - '-p' = parsimonyRandomSeed (again at a loss for what this interprets to)
 
