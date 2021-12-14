@@ -103,8 +103,22 @@ https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.
 - Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contains and try to understand what each parameter means.
 - 'mpiexec' is a the respective Message Passing Interface (MPI) run-time command, e.g. mpiexec or mpirun depending on your
 local installation (please check with your local computer scientist or someone at the CQLS).
-- '-n' ­n Specifies the name of the output file
+- 'raxmlHPC-MPI' the version of RAxML being used; RAxML-VI-HPC: Improvement of the OpenMP parallelization, technical
+tuning of the GTR-based likelihood models, re-implementation of the MP (Maximum Parsimony) starting tree computations, MPI-based parallel version for multiple bootstrapping.
+- '-N' Specifies the number of alternative runs on distinct starting trees, e.g., if '-N 10'
+is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees 
+- '-n' specifies the name of the output file
+- '-s' is the input the file 
+- '-m' is the model to use 
+- '-x' = rapidBootstrapRandomNumberSeed (whatever that means)
+- '-p' = parsimonyRandomSeed (again at a loss for what this interprets to)
+
+
 ```
+#Example 1, using GTR Model
+SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m GTRCAT -f a -x 12345 -p 12345' -r snp_tree -P 10
+
+#Example 2, using MULTICAT Model 
 SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m MULTICAT -f a -x 12345 -p 12345' -r snp_tree -P 10
 
 ```
