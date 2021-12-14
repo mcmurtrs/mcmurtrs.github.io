@@ -69,7 +69,34 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 - One you have correctly installed Apache Ant, Java JDK 1.6, and JMORDELTEST you can then open the GUI of JMODELTEST with by selecting the .jar file and then follow the tutorial found here for running the JMODELTEST: https://evomics.org/learning/phylogenetics/jmodeltest/
 - Note that this step is computationally heavy and appears to be taking a long time to run.
 
+## Step 5.1: After JModelTest has Finished Running...
+
+- The results can be found by watching the video here:
+- 
+https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
+
+## Analysis of Results
+
+- We can see from the screenshots below that the best fitting evolutionary model from this analysis is the GTR model.
+- We know this because it has the highest AIC, BIC, and DT values and also has a value of delta = 0 for all comparisons.
+
+![image](https://user-images.githubusercontent.com/49656044/146057741-db8ef153-9ead-4375-a403-791b0f1b3585.png)
+
+![image](https://user-images.githubusercontent.com/49656044/146057683-6ac36d70-b8cc-4941-a101-05be0942d95e.png)
+
+![image](https://user-images.githubusercontent.com/49656044/146057791-d63909fc-c215-4102-9dd2-913baa49a996.png)
+
+
+## Full JModelTest Results for 20 Samples from scattered places across North American, Siberia, and Japan 
+
+https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.jmodeltest.html
+
+
+
+
 ## Step 6: Run RAxML on the cluster
+- Now that we know which evolutionary model to use, we can change this in the one liner command for RAxML and start builing our tree!
+- 
 - Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 
 ```
