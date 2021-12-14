@@ -74,8 +74,9 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ## Step 5.1: After JModelTest has Finished Running...
 
 - The results can be found by watching the video here:
+- https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
 - In short, 'Analysis' > 'Do BIC Calculations' > 'Keep default settings unless you have a reason not to' > 'Results' > 'Show results table'
-https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
+
 
 ## Analysis of Results
 
@@ -102,7 +103,7 @@ https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.
 - Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contains and try to understand what each parameter means.
 - 'mpiexec' is a the respective Message Passing Interface (MPI) run-time command, e.g. mpiexec or mpirun depending on your
 local installation (please check with your local computer scientist or someone at the CQLS).
-- '-n' is the 
+- '-n' ­n Specifies the name of the output file
 ```
 SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m MULTICAT -f a -x 12345 -p 12345' -r snp_tree -P 10
 
