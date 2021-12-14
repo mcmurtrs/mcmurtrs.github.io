@@ -47,7 +47,7 @@ write.table(gt.pyl, sep = "\t", col.names = F, file = "gt.phy")
 
 ```
 
-## Step 4: Convert VCF file into Nexus format with vcf2phylip python script:
+## Step 4: Convert VCF file into fasta file (Nexus format) with vcf2phylip python script:
 - Before we can run RAxML we need to know which evolutionary model to use.
 - This can be figured out with JMODELTEST however in order to run JMODELTEST we need a Nexus or fasta file.
 - We only have a vcf file which doesn't contain sequence information. In order to make a P. tree we need sequence information.
