@@ -74,7 +74,7 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ## Step 5.1: After JModelTest has Finished Running...
 
 - The results can be found by watching the video here:
-- 
+- In short, 'Analysis' > 'Do BIC Calculations' > 'Keep default settings unless you have a reason not to' > 'Results' > 'Show results table'
 https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
 
 ## Analysis of Results
