@@ -228,9 +228,17 @@ https://evomics.org/learning/phylogenetics/jmodeltest/
 
 
 #### Helpful videos:
+
+#Installing Apache Ant
+https://www.youtube.com/watch?v=7z2yXY57jxY
+
+#Info on Phylogenetic Trees
 https://www.youtube.com/watch?v=uAf0DCGynTk&t=323s
 
-https://www.youtube.com/watch?v=7z2yXY57jxY
+#JModelTest Info
+https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
+
+
 
 
 
