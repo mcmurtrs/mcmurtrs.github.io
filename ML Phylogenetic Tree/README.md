@@ -98,9 +98,11 @@ https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.
 
 ## Step 6: Run RAxML on the cluster
 - Now that we know which evolutionary model to use, we can change this in the one liner command for RAxML and start builing our tree!
-- 
-- Note that these parameters are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
-
+- Note that the parameters below are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
+- Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contains and try to understand what each parameter means.
+- 'mpiexec' is a the respective Message Passing Interface (MPI) run-time command, e.g. mpiexec or mpirun depending on your
+local installation (please check with your local computer scientist or someone at the CQLS).
+- '-n' is the 
 ```
 SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s gt.phy -m MULTICAT -f a -x 12345 -p 12345' -r snp_tree -P 10
 
