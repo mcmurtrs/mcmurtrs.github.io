@@ -68,6 +68,8 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 - This video does an excellent job of showing how to install Apache Ant on Windows 10: https://www.youtube.com/watch?v=7z2yXY57jxY
 - One you have correctly installed Apache Ant, Java JDK 1.6, and JMORDELTEST you can then open the GUI of JMODELTEST with by selecting the .jar file and then follow the tutorial found here for running the JMODELTEST: https://evomics.org/learning/phylogenetics/jmodeltest/
 - Note that this step is computationally heavy and appears to be taking a long time to run.
+- As a trial run, I ran a fasta file containing 20 full genome samples and it took ~18 hours to run.
+- The large file that contained 101 samples would not even load into the GUI so an alternative method will need to be identified for using larger files. 
 
 ## Step 5.1: After JModelTest has Finished Running...
 
