@@ -135,7 +135,6 @@ fillColor: '#ffffff',
 	  
 	  
 	  var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
-		  	color: 'red',
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -227,6 +226,7 @@ fillColor: '#ffffff',
 	  
 	  	   /* Code chunk for shape file */ 
 	var shpfileTMT2_BLK1 = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
+			color: 'yellow',
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
@@ -320,6 +320,7 @@ fillColor: '#ffffff',
 	  
 	   /* Code chunk for shape file */ 
 	var shpfileTMT3_BLK1 = new L.Shapefile('shapefiles/TMT3_BLK1.zip', {
+		color: 'red',
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
