@@ -226,7 +226,7 @@ fillColor: '#ffffff',
 	  
 	  	   /* Code chunk for shape file */ 
 	var shpfileTMT2_BLK1 = new L.Shapefile('shapefiles/TMT2_BLK1.zip', {
-			color: 'yellow',
+			color: 'orange',
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
