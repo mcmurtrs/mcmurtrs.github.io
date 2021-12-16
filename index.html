@@ -86,9 +86,9 @@
 	 	  
 	  
 	  
-    /* Display a point marker with pop-up text. TMT3_BLK4 */
+    /* Display a point marker with pop-up text. TMT3_BLK4 
   L.marker([44.5240086, -123.5404820]).addTo(map).bindPopup // EDIT marker coordinates
-  ("Popup Text!!").addTo(map).openPopup; // EDIT pop-up text message
+  ("Popup Text!!").addTo(map).openPopup; // EDIT pop-up text message */
   
     
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 	  	  
@@ -126,10 +126,16 @@ legend.addTo(map);
   /* -------------------------Code chunk for shape files. Source: https://www.youtube.com/watch?v=28nDmhHKaig&t=286s----------------------- */ 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */ 
  
-	  
+/*	  window.circle = L.circle([51.508, -0.11], 500, {
+color: 'red',
+fillColor: '#ffffff',
+    fillOpacity: 0.5
+}).addTo(map); */ 
+ 
 	  
 	  
 	  var shpfileTMT1_BLK1 = new L.Shapefile('shapefiles/TMT1_BLK1.zip', {
+		  	color: 'red',
 			onEachFeature: function(feature, layer) {
 				if (feature.properties) {
 					layer.bindPopup(Object.keys(feature.properties).map(function(k) {
