@@ -81,7 +81,7 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ## Analysis of Results
 
 - We can see from the screenshots below that the best fitting evolutionary model from this analysis is the GTR model.
-- We know this because it has the highest AIC, BIC, and DT values and also has a value of delta = 0 for all comparisons.
+- We know this because it has the lowest AIC, BIC, and DT values and also has a value of delta = 0 for all comparisons.
 - It is worthwhile to run the tests multiple times.
 
 ![image](https://user-images.githubusercontent.com/49656044/146057741-db8ef153-9ead-4375-a403-791b0f1b3585.png)
