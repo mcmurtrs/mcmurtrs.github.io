@@ -63,7 +63,40 @@ chmod +x vcf2phylip.py
 python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
-## Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:
+## Step 5: Run evolutionary model test with RAxML-ng to determine best fitting model to use:
+
+```
+/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/modeltest-ng-static -i 30_final_Dec21.min4.fasta -d nt
+```
+
+## Step 5.1: After model-test-ng has finished running, Build ML Starting tree with RAxML-ng
+```
+SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --msa 30_final_Dec21.min4.fasta --model TVM --prefix T1 --threads 20' -r T1 -P 20
+```
+
+## Step 5.2: Make 1000 bootstrap trees
+```
+SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bootstrap --msa T1.raxml.rba --model TVM --prefix T2 --threads 20 --bs-tree 1000' -r T2 -P 20
+```
+
+## Step 5.3 Check the convergence of the boostrapping test 
+
+```
+/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bsconverge --bs-trees T2.raxml.bootstraps --prefix Test --threads 2 --bs-cutoff 0.03
+```
+
+## Step 5.4 Finally map Support values from Bootstrap test to best scoring ML tree
+- After this step is finished it will print out where our final tree is at!
+- i.e. Best ML tree with Felsenstein bootstrap (FBP) support values saved to: /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/cs_align/Phylo_tree/T3.raxml.support
+- Hooray!
+```
+/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --support --tree T1.raxml.bestTree --bs-trees T2.raxml.bootstraps --prefix T3 --threads 2
+```
+
+## Skip to Step 7 unless there were issues with model-test-ng
+
+
+## Alternatively (Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:)
 - In order to install the GUI of JMODELTEST you need to first intall Apache Ant and Java JDK 1.6 (or a newer version).
 - This video does an excellent job of showing how to install Apache Ant on Windows 10: https://www.youtube.com/watch?v=7z2yXY57jxY
 - One you have correctly installed Apache Ant, Java JDK 1.6, and JMORDELTEST you can then open the GUI of JMODELTEST with by selecting the .jar file and then follow the tutorial found here for running the JMODELTEST: https://evomics.org/learning/phylogenetics/jmodeltest/
@@ -71,7 +104,7 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 - As a trial run, I ran a fasta file containing 20 full genome samples and it took ~18 hours to run.
 - The large file that contained 101 samples would not even load into the GUI so an alternative method will need to be identified for using larger files. 
 
-## Step 5.1: After JModelTest has Finished Running...
+## Alternatively Step 5.1: After JModelTest has Finished Running...
 
 - The results can be found by watching the video here:
 - https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
@@ -91,14 +124,14 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ![image](https://user-images.githubusercontent.com/49656044/146057791-d63909fc-c215-4102-9dd2-913baa49a996.png)
 
 
-## Full JModelTest Results for 20 Samples from scattered places across North American, Siberia, and Japan 
+## Alternatively Full JModelTest Results for 20 Samples from scattered places across North American, Siberia, and Japan 
 
 https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.jmodeltest.html
 
 
 
 
-## Step 6: Run RAxML on the cluster
+## Alternatively Step 6: Run RAxML on the cluster
 - Now that we know which evolutionary model to use, we can change this in the one liner command for RAxML and start builing our tree!
 - Note that the parameters below are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
 - Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contents and try to understand what each parameter means.
@@ -124,8 +157,8 @@ SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -m MU
 ```
 
 ## Step 7: Move files from the cluster to your computer and change file extension
-
-- Move the .bipartitions file to your desktop
+- /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/cs_align/Phylo_tree/T3.raxml.support
+- Move the .raxml.support file to your desktop
 - This file contains the tree and bootstrap values.
 - On your computer, change the extension of the bipartions file to .tre
 
