@@ -2,52 +2,7 @@
 
 #### Authors: Shawn McMurtrey, Carolina Piña Páez, Nick Carleson, Patrick Bennett, Ricardo I. Alcalá Briseño, Javier Tabima, Jared LeBoldus
 
-## Step 1: Import filtered VCF file into R
-- Read VCF file into R with vcfR package:
-
-```{r}
-library(vcfR)
-library(poppr)
-library(ape)
-library(RColorBrewer)
-LRR_VCF <- read.vcfR("C:/Users/shawn/Desktop/Cs_ALL_filtered_NEW_11_30.vcf.gz")
-LRR_VCF
-
-```
-
-## Step 2: Convert the very large VCF file into a matrix for computational efficeincy 
-- Format missing data and account for mixed phases with pipes into a gt matrix.
-- Print out the number of samples and number of SNPs within your file
-- Open the file in Notepad ++, save those numbers and paste them in the first line of "gt.phy" that you're going to save in the next two step.
-- Do a "Find and Replace" to replace all of the " symbols with a blank space (the " symbol throws an error during the next step when you run MAxML on the cluster.
-
-```{r}
-
-gt <- extract.gt(LRR_VCF, element = "GT")
-gt[gt == "0/0"] <- 0
-gt[gt == "0|0"] <- 0
-gt[gt == "0/1"] <- 1
-gt[gt == "0|1"] <- 1
-gt[gt == "1|0"] <- 1
-gt[gt == "1/1"] <- 2
-gt[gt == "1|1"] <- 2
-gt[is.na(gt)] <- "?"
-gt <- t(gt)
-dim(gt)
-#102 1341746
-
-```
-
-## Step 3: Write out the matrix into a table and save it to a file called gt.phy
-
-```{r}
-
-gt.pyl <- apply(gt, 1, paste0, collapse="")
-write.table(gt.pyl, sep = "\t", col.names = F, file = "gt.phy")
-
-```
-
-## Step 4: Convert VCF file into fasta file (Nexus format) with vcf2phylip python script:
+## Step 1: Convert VCF file into fasta file (Nexus format) with vcf2phylip python script:
 - Before we can run RAxML we need to know which evolutionary model to use.
 - This can be figured out with JMODELTEST however in order to run JMODELTEST we need a Nexus or fasta file.
 - We only have a vcf file which doesn't contain sequence information. In order to make a P. tree we will need sequence information.
@@ -63,97 +18,34 @@ chmod +x vcf2phylip.py
 python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 ```
 
-## Step 5: Run evolutionary model test with RAxML-ng to determine best fitting model to use:
+## Step 2: Run evolutionary model test with RAxML-ng to determine best fitting model to use:
 
 ```
 /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/modeltest-ng-static -i 30_final_Dec21.min4.fasta -d nt
 ```
 
-## Step 5.1: After model-test-ng has finished running, Build ML Starting tree with RAxML-ng
+## Step 3: After model-test-ng has finished running, Build ML Starting tree with RAxML-ng
 ```
 SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --msa 30_final_Dec21.min4.fasta --model TVM --prefix T1 --threads 20' -r T1 -P 20
 ```
 
-## Step 5.2: Make 1000 bootstrap trees
+## Step 4: Make 1000 bootstrap trees
 ```
 SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bootstrap --msa T1.raxml.rba --model TVM --prefix T2 --threads 20 --bs-tree 1000' -r T2 -P 20
 ```
 
-## Step 5.3 Check the convergence of the boostrapping test 
+## Step 5: Check the convergence of the boostrapping test 
 
 ```
 /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bsconverge --bs-trees T2.raxml.bootstraps --prefix Test --threads 2 --bs-cutoff 0.03
 ```
 
-## Step 5.4 Finally map Support values from Bootstrap test to best scoring ML tree
+## Step 6: Finally map Support values from Bootstrap test to best scoring ML tree
 - After this step is finished it will print out where our final tree is at!
 - i.e. Best ML tree with Felsenstein bootstrap (FBP) support values saved to: /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/cs_align/Phylo_tree/T3.raxml.support
 - Hooray!
 ```
 /nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --support --tree T1.raxml.bestTree --bs-trees T2.raxml.bootstraps --prefix T3 --threads 2
-```
-
-## Skip to Step 7 unless there were issues with model-test-ng
-
-
-## Alternatively (Step 5: Run JMODELTEST to determine the best fitting evolutionary model to use:)
-- In order to install the GUI of JMODELTEST you need to first intall Apache Ant and Java JDK 1.6 (or a newer version).
-- This video does an excellent job of showing how to install Apache Ant on Windows 10: https://www.youtube.com/watch?v=7z2yXY57jxY
-- One you have correctly installed Apache Ant, Java JDK 1.6, and JMORDELTEST you can then open the GUI of JMODELTEST with by selecting the .jar file and then follow the tutorial found here for running the JMODELTEST: https://evomics.org/learning/phylogenetics/jmodeltest/
-- Note that this step is computationally heavy and appears to be taking a long time to run.
-- As a trial run, I ran a fasta file containing 20 full genome samples and it took ~18 hours to run.
-- The large file that contained 101 samples would not even load into the GUI so an alternative method will need to be identified for using larger files. 
-
-## Alternatively Step 5.1: After JModelTest has Finished Running...
-
-- The results can be found by watching the video here:
-- https://www.youtube.com/watch?v=uOWxBDUcss4&t=366s
-- In short, 'Analysis' > 'Do BIC Calculations' > 'Keep default settings unless you have a reason not to' > 'Results' > 'Show results table'
-
-
-## Analysis of Results
-
-- We can see from the screenshots below that the best fitting evolutionary model from this analysis is the GTR model.
-- We know this because it has the lowest AIC, BIC, and DT values and also has a value of delta = 0 for all comparisons.
-- It is worthwhile to run the tests multiple times.
-
-![image](https://user-images.githubusercontent.com/49656044/146057741-db8ef153-9ead-4375-a403-791b0f1b3585.png)
-
-![image](https://user-images.githubusercontent.com/49656044/146057683-6ac36d70-b8cc-4941-a101-05be0942d95e.png)
-
-![image](https://user-images.githubusercontent.com/49656044/146057791-d63909fc-c215-4102-9dd2-913baa49a996.png)
-
-
-## Alternatively Full JModelTest Results for 20 Samples from scattered places across North American, Siberia, and Japan 
-
-https://mcmurtrs.github.io/lrr.fastqc.github.io/Final_all_over_dec12.min4.fasta.jmodeltest.html
-
-
-
-
-## Alternatively Step 6: Run RAxML on the cluster
-- Now that we know which evolutionary model to use, we can change this in the one liner command for RAxML and start builing our tree!
-- Note that the parameters below are specifically for the Center for Quantitative Life Sciences cluster at Oregon State University
-- Instead of just blindly copying and pasting the command below (as I did the first time *rolls eyes*) lets dissect the contents and try to understand what each parameter means.
-- 'mpiexec' is a the respective Message Passing Interface (MPI) run-time command, e.g. mpiexec or mpirun depending on your
-local installation (please check with your local computer scientist or someone at the CQLS).
-- 'raxmlHPC-MPI' the version of RAxML being used; From the manual, RAxML-VI-HPC: Improvement of the OpenMP parallelization, technical
-tuning of the GTR-based likelihood models, re-implementation of the MP (Maximum Parsimony) starting tree computations, MPI-based parallel version for multiple bootstrapping.
-- '-N' Specifies the number of alternative runs on distinct starting trees, e.g., if '-N 10' is specified, RAxML will compute 10 distinct ML trees starting from 10 distinct randomized maximum parsimony starting trees 
-- '-n' specifies the name of the output file
-- '-s' is the input the file 
-- '-m' is the model to use (Generally, CAT should perform better than GAMMA, particularly with respect to inference times. CAT can typically also produce better scoring trees.)
-- '-x' = rapidBootstrapRandomNumberSeed (whatever that means)
-- '-p' = parsimonyRandomSeed (again at a loss for what this interprets to)
-
-
-```
-#Example 1, using Jukes Cantor model
-SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -s All_over_dec14_21.phy -m MULTICAT --JC69 -f a -x 12345 -p 12345' -r snp_tree -P 10
-
-#Example 2, using MULTICAT Model 
-SGE_Batch -q bpp@symbiosis -c 'mpiexec -n 10 raxmlHPC-MPI -N 50 -n myMLJob -m MULTICAT -s All_over_dec14_21.phy -f a -x 12345 -p 12345' -r snp_tree -P 10
-
 ```
 
 ## Step 7: Move files from the cluster to your computer and change file extension
