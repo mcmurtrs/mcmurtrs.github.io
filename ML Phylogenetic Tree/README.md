@@ -111,7 +111,7 @@ d3$label <- as.numeric(d3$label)
 d3 <- d3[d3$label > 70,]
 ```
 
-## Step 13: I'm not really sure why we do this step??
+## Step 13: <Clever Title>
 
 
 ```{r}
