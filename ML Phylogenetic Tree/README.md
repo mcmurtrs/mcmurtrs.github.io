@@ -26,18 +26,18 @@ python vcf2phylip.py -i Cs_ALL_filtered_NEW_11_30.vcf.gz -f
 
 ## Step 3: After model-test-ng has finished running, Build ML Starting tree with RAxML-ng
 ```
-SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --msa 30_final_Dec21.min4.fasta --model TVM --prefix T1 --threads 20' -r T1 -P 20
+SGE_Batch -q bpp@symbiosis -c '/nfs4/BPP/Anderson_LeBoldus/LeBoldus/mcmurtrs/bin/raxml-ng --msa 30_final_Dec21.min4.fasta --model TVM --prefix T1 --threads 20' -r T1 -P 20
 ```
 
 ## Step 4: Make 1000 bootstrap trees
 ```
-SGE_Batch -q bpp@symbiosis -c '/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bootstrap --msa T1.raxml.rba --model TVM --prefix T2 --threads 20 --bs-tree 1000' -r T2 -P 20
+SGE_Batch -q bpp@symbiosis -c '/nfs4/BPP/Anderson_LeBoldus/LeBoldus/mcmurtrs/bin/raxml-ng --bootstrap --msa T1.raxml.rba --model TVM --prefix T2 --threads 20 --bs-tree 1000' -r T2 -P 20
 ```
 
 ## Step 5: Check the convergence of the boostrapping test 
 
 ```
-/nfs1/BPP/LeBoldus_Lab/user_folders/mcmurtrs/bin/raxml-ng --bsconverge --bs-trees T2.raxml.bootstraps --prefix Test --threads 2 --bs-cutoff 0.03
+/nfs4/BPP/Anderson_LeBoldus/LeBoldus/mcmurtrs/bin/raxml-ng --bsconverge --bs-trees T2.raxml.bootstraps --prefix Test --threads 2 --bs-cutoff 0.03
 ```
 
 ## Step 6: Finally map Support values from Bootstrap test to best scoring ML tree
